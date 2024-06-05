@@ -22,4 +22,7 @@ jobs:
           cd 04-using-actions
           npm install
       - name: Run tests
-        run: npm run test
+        run: |
+          pwd
+          cd 04-using-actions
+          npm run test
