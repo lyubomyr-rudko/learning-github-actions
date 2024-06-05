@@ -1,0 +1,12 @@
+name: Filter Activity Types
+on:
+  pull_request:
+    types: [opened, synchronize]
+    branches:
+      - main
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show Message
+        run: echo "This is a pull request opened or synchronized with main branch"
