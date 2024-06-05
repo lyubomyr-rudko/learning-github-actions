@@ -9,4 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Show Message
-        run: echo "This is a pull request opened or synchronized with main branch"
+        run: |
+          echo "This is a pull request opened or synchronized with main branch"
+          echo "Event name: ${{ github.event_name }}"
+          echo "Action: ${{ github.event.action }}"
