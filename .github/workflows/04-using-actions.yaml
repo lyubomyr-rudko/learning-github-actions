@@ -15,9 +15,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "18"
+      - name: Print node version
+        run: node --version
       - name: Install dependencies
         run: |
           cd 04-using-actions
           npm install
       - name: Run tests
-        run: npm test
+        run: npm run test
