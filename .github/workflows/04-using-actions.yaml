@@ -10,4 +10,4 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@v2
       - name: Print folders
-        run: ls -l
+        run: ls -la
