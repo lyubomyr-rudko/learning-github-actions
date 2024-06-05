@@ -1,0 +1,15 @@
+name: Filter Activity Type - close PR
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show Message
+        run: |
+          echo "This is a pull request closed with main branch"
+          echo "Event name: ${{ github.event_name }}"
+          echo "Action: ${{ github.event.action }}"
