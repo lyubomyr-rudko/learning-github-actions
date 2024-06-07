@@ -1,28 +1,13 @@
-name: using third-party actions
-on:
-  # push:
-  # pull_request:
-  workflow_dispatch:
+name: 04 - Using Actions
+on: push
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 04-using-actions
     steps:
-      - name: Checkout the code
+      - name: Checkout Code
         uses: actions/checkout@v4
-      - name: Print folders
+      - name: Printing Folders
         run: ls -la
-      - name: Setup node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "18"
-      - name: Print node version
-        run: node --version
-      - name: Install dependencies
-        run: |
-          cd 04-using-actions
-          npm install
-      - name: Run tests
-        run: |
-          pwd
-          cd 04-using-actions
-          npm run test
