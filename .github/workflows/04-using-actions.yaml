@@ -14,10 +14,11 @@ jobs:
         with:
           node-version: "18.20.2"
       - name: Install Dependencies
-        run: npm ci
+        run: |
+          pwd
+          npm ci
       - name: Run Unit Tests
         run: npm run test
       - name: Printing Folders
         run: |
-          pwd
           ls -la
