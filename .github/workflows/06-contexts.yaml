@@ -18,6 +18,6 @@ jobs:
       - name: Dump all
         run: echo '${{ toJSON(github) }}'
       - name: Retrieve Variable
+        shell: bash
         run: |
           echo "$MY_VAR"
-        shell: bash
