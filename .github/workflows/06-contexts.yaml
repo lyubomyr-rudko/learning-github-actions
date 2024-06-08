@@ -20,3 +20,4 @@ jobs:
       - name: Retrieve Variable
         run: |
           echo "$MY_VAR"
+        shell: bash
