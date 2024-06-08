@@ -15,6 +15,8 @@ jobs:
           echo "Workflow: ${{github.workflow}}"
           echo "Run ID: ${{github.run_id}}"
           echo "Run number: ${{github.run_number}}"
+      - name: Dump all
+        run: echo '${{ toJSON(github) }}'
       - name: Retrieve Variable
         run: |
           echo "$MY_VAR"
