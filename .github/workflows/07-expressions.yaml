@@ -10,7 +10,7 @@ on:
 
 jobs:
   echo:
-    runs-on: unbuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: "[debug] Print start-up data"
         if: inputs.debug == true
