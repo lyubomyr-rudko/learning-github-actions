@@ -17,6 +17,8 @@ jobs:
           echo "Run number: ${{github.run_number}}"
       - name: Dump all
         run: echo '${{ toJSON(github) }}'
+      - name: Retrieve Env variable
+        run: echo $MY_VAR
       - name: Retrieve Variable
         shell: bash
         run: |
