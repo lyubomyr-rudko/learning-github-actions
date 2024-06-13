@@ -26,14 +26,14 @@ jobs:
           echo "Workflow: ${{github.workflow}}"
           echo "Run ID: ${{github.run_id}}"
           echo "Run number: ${{github.run_number}}"
-      - name: Dump all
-        run: echo '${{ toJSON(github) }}'
-      - name: Retrieve Env variable
-        run: echo "$MY_VAR"
-      - name: Retrieve Variable
-        shell: bash
-        run: |
-          echo ${{ vars.MY_VAR }}
+      # - name: Dump all
+      #   run: echo '${{ toJSON(github) }}'
+      # - name: Retrieve Env variable
+      #   run: echo "$MY_VAR"
+      # - name: Retrieve Variable
+      #   shell: bash
+      #   run: |
+      #     echo ${{ vars.MY_VAR }}
       - name: Print Env Variables
         env:
           MY_OVERWRITTEN_VAR: step
