@@ -19,12 +19,13 @@ jobs:
           echo "Branch: ${{ github.ref}}"
           echo "Branch: ${{ runner.os }}"
       - name: "[debug] Print when triggered from main"
-        if: inputs.debug && github.ref_name == 'main'
+        if: (inputs.debug && github.ref_name == 'main')
         run: |
           echo "I was triggered from main"
       - name: "Greeting ${{github.ref_name}}"
         run: |
           echo "Hello, world"
+          echo ">${{(inputs.debug && github.ref_name == 'main')}}<"
 
 # The second step, named [debug] Print when triggered from main, should execute only if the inputs.debug input is set to true and the workflow was triggered from the main branch. The step should print a single line on the screen: "I was triggered from main".
 
