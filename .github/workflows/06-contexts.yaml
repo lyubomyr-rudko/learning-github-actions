@@ -1,5 +1,8 @@
 name: 06 - Contexts
 run-name: 06 - Contexts | DEBUG - ${{ inputs.debug }}
+env:
+  MY_WORKFLOW_VAR: workflow
+  MY_OVERWRITTEN_VAR: workflow
 on:
   push:
   workflow_dispatch:
@@ -9,6 +12,9 @@ on:
         default: false
 jobs:
   echo-data:
+    env:
+      MY_JOB_VAR: job
+      MY_OVERWRITTEN_VAR: job
     runs-on: ubuntu-latest
     steps:
       - name: Display Information
@@ -28,3 +34,17 @@ jobs:
         shell: bash
         run: |
           echo ${{ vars.MY_VAR }}
+      - name: Print Env Variables
+        env:
+          MY_OVERWRITTEN_VAR: step
+        run: |
+          echo "Workflow env: ${{ vars.MY_WORKFLOW_VAR }}"
+          echo "Overwritten env: ${{ vars.MY_OVERWRITTEN_VAR }}"
+
+      - name: Another step to print vars
+        run: |
+          echo "Workflow env: ${{ vars.MY_WORKFLOW_VAR }}"
+          echo "Overwritten env: ${{ vars.MY_OVERWRITTEN_VAR }}"
+
+# "Workflow env: <retrieve the value of the MY_WORKFLOW_VAR env variable here>"
+# "Overwritten env: <retrieve the value of the MY_OVERWRITTEN_VAR env variable here>"
