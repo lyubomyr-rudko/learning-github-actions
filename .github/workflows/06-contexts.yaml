@@ -20,4 +20,4 @@ jobs:
       - name: Retrieve Variable
         shell: bash
         run: |
-          echo "$MY_VAR"
+          echo ${{ vars.MY_VAR }}
