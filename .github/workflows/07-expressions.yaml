@@ -1,0 +1,28 @@
+name: 07 - Using Expressions
+
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      debug:
+        type: boolean
+        default: true
+
+jobs:
+  echo:
+    runs-on: unbuntu-latest
+    steps:
+      - name: "[debug] Print start-up data"
+        if: inputs.debug == true
+        run: |
+          echo "Triggered by: ${{ github.event_name }}"
+          echo "Branch: ${{ github.ref}}"
+          echo "Branch: ${{ runner.os }}"
+      - name: "[debug] Print when triggered from main"
+        run: |
+          echo ${{ github.head_ref }} 
+          echo ${{ github.ref_name }}
+
+# The second step, named [debug] Print when triggered from main, should execute only if the inputs.debug input is set to true and the workflow was triggered from the main branch. The step should print a single line on the screen: "I was triggered from main".
+
+# The third step, named Greeting, should be normally executed and print a "Hello, world" message on the screen.
