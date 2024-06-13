@@ -22,7 +22,7 @@ jobs:
         if: inputs.debug && github.ref_name == 'main'
         run: |
           echo "I was triggered from main"
-      - name: "Greeting"
+      - name: "Greeting ${{github.ref_name}}"
         run: |
           echo "Hello, world"
 
