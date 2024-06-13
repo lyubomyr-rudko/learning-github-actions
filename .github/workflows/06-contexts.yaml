@@ -17,15 +17,15 @@ jobs:
       MY_OVERWRITTEN_VAR: job
     runs-on: ubuntu-latest
     steps:
-      - name: Display Information
-        run: |
-          echo "Event name: ${{github.event_name}}"
-          echo "Ref: ${{github.ref}}"
-          echo "SHA: ${{github.sha}}"
-          echo "Actor: ${{github.actor}}"
-          echo "Workflow: ${{github.workflow}}"
-          echo "Run ID: ${{github.run_id}}"
-          echo "Run number: ${{github.run_number}}"
+      # - name: Display Information
+      #   run: |
+      #     echo "Event name: ${{github.event_name}}"
+      #     echo "Ref: ${{github.ref}}"
+      #     echo "SHA: ${{github.sha}}"
+      #     echo "Actor: ${{github.actor}}"
+      #     echo "Workflow: ${{github.workflow}}"
+      #     echo "Run ID: ${{github.run_id}}"
+      #     echo "Run number: ${{github.run_number}}"
       # - name: Dump all
       #   run: echo '${{ toJSON(github) }}'
       # - name: Retrieve Env variable
@@ -34,6 +34,7 @@ jobs:
       #   shell: bash
       #   run: |
       #     echo ${{ vars.MY_VAR }}
+
       - name: Print Env Variables
         env:
           MY_OVERWRITTEN_VAR: step
