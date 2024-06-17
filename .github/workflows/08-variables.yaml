@@ -40,6 +40,6 @@ jobs:
     steps:
       - name: Print Prod Variables
         run: |
-          echo "Org overwritten var: $OVERWRITTEN_VAR"
+          echo "Org overwritten var: ${{vars.OVERWRITTEN_VAR}}"
           echo "Repo var: $REPOSITORY_VAR"
           echo "Environment var: $TARGET_VAR"
