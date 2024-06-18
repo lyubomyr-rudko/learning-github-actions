@@ -33,6 +33,6 @@ jobs:
     environment: ${{inputs.target}}
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy
+      - name: Deploy!!
         run: |
           echo "Deploying to ${{ inputs.target }}
