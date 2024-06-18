@@ -24,7 +24,7 @@ jobs:
     steps:
       - name: Build
         run: |
-          echo "Building from tag ${{ inputs.tag }}
+          echo "Building from tag ${{ inputs.tag }}"
 
   deploy:
     needs:
@@ -35,4 +35,4 @@ jobs:
     steps:
       - name: Deploy!!
         run: |
-          echo "Deploying to ${{ inputs.target }}
+          echo "Deploying to ${{ inputs.target }}"
