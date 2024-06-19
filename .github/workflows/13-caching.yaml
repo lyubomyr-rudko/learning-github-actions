@@ -37,7 +37,7 @@ jobs:
           path: 13-caching/react-app/node_modules
       - name: Install dependencies
         if: ${{steps.cache.outputs.cache-hit != 'true'}}
-        run: nmp ci
+        run: npm ci
 
   build:
     needs: install-deps
