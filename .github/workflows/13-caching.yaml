@@ -37,7 +37,7 @@ jobs:
           path: 13-caching/react-app/node_modules
       - name: Install dependencies
         if: ${{steps.cache.outputs.cache-hit != 'true'}}
-        run: nupm ci
+        run: nmp ci
 
   build:
     needs: install-deps
@@ -68,3 +68,13 @@ jobs:
         run: npm run build
       - name: Deploying to nonprod
         run: echo "Deploying to nonprod"
+
+  linting:
+    needs: install-deps
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 13-caching/react-app
+    steps:
+      - name: asdf
+        run: echo "asdf"
