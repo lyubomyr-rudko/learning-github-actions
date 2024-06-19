@@ -13,7 +13,34 @@ on:
         default: true
         description: Whether to execute cache step
 jobs:
+  install-deps:
+    runs-on: ubuntu-latest
+    outputs:
+      deps-cache-key: ${{steps.cache-key.outputs.CACHE_KEY}}
+    defaults:
+      run:
+        working-directory: 13-caching/react-app
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+      - name: Calculate cache key
+        id: cache-key
+        run: |
+          echo "CACHE_KEY=deps-node-modules-${{ hashFiles('13-caching/react-app/package-lock.json') }}" >> $GITHUB_OUTPUT
+      - name: Download cached dependencies
+        uses: actions/cache@v4
+        id: cache
+        with:
+          key: ${{steps.cache-key.outputs.CACHE_KEY}}
+          path: 13-caching/react-app/node_modules
+      - name: Install dependencies
+        if: ${{steps.cache.outputs.cache-hit != 'true'}}
+        run: nupm ci
+
   build:
+    needs: install-deps
     defaults:
       run:
         working-directory: 13-caching/react-app
@@ -31,9 +58,9 @@ jobs:
         if: ${{ inputs.use-cache }}
         with:
           path: 13-caching/react-app/node_modules
-          key: node-modules-key-${{ hashFiles('13-caching/react-app/package-lock.json') }}
+          key: ${{ needs.install-deps.outputs.deps-cache-key }}
       - name: Install dependencies
-        if: ${{steps.cache.outputs.cache-hit != 'true'}}
+        if: ${{ steps.cache.outputs.cache-hit != 'true' }}
         run: npm ci
       - name: Testing
         run: npm run test
