@@ -6,11 +6,22 @@ on:
 jobs:
   compatibility:
     name: ${{matrix.os}} - ${{matrix.node}}
-    runs-on: ${{matrix.os}}
+    # runs-on: ${{matrix.os}}
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         node: [18.x 20.x]
         os: [ubuntu-latest, windows-latest]
+        include:
+          - node: 16.x
+            os: ubuntu-latest
+          - tag: experimental
+            node: 20.x
+            os: ubuntu-latest
     steps:
-      - name: adsf
-        run: echo "asdf"
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{matrix.node}}
+      - name: Some tests
+        run: echo "Running tests on ${{matrix.os}} ${{matrix.node}}"
