@@ -1,0 +1,16 @@
+name: 15 Working with matrices
+
+on:
+  workflow_dispatch:
+
+jobs:
+  compatibility:
+    name: ${{matrix.os}} - ${{matrix.node}}
+    runs-on: ${{matrix.os}}
+    strategy:
+      matrix:
+        node: [18.x 20.x]
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - name: adsf
+        run: echo "asdf"
