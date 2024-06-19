@@ -59,9 +59,9 @@ jobs:
         with:
           path: 13-caching/react-app/node_modules
           key: ${{ needs.install-deps.outputs.deps-cache-key }}
-      - name: Install dependencies
-        if: ${{ steps.cache.outputs.cache-hit != 'true' }}
-        run: npm ci
+      # - name: Install dependencies
+      #   if: ${{ steps.cache.outputs.cache-hit != 'true' }}
+      #   run: npm ci
       - name: Testing
         run: npm run test
       - name: Building
@@ -78,5 +78,23 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: ls
-        run: ls -la
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node-version }}
+      - name: Download cached dependencies
+        id: cache
+        uses: actions/cache@v3
+        if: ${{ inputs.use-cache }}
+        with:
+          path: 13-caching/react-app/node_modules
+          key: ${{ needs.install-deps.outputs.deps-cache-key }}
+      # - name: Install dependencies
+      #   if: ${{ steps.cache.outputs.cache-hit != 'true' }}
+      #   run: npm ci
+
+      - name: Testing
+        run: npm run test
+
+      - name: Linting
+        run: echo "Linting..."
