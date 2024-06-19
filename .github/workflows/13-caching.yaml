@@ -76,5 +76,7 @@ jobs:
       run:
         working-directory: 13-caching/react-app
     steps:
-      - name: asdf
-        run: echo "asdf"
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: ls
+        run: ls -la
