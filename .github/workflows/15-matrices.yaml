@@ -49,8 +49,12 @@ jobs:
             opacity: 100
           - color: red
             shape: triangle
+          - color: green
+            shape: circle
+            size: medium
         exclude:
-          - opacity: 75
+          - color: green
+            shape: circle
 
     steps:
       - name: Dumy step
