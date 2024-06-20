@@ -9,6 +9,10 @@ inputs:
     description: "The working directory where the package-lock.json file is located"
     required: true
     default: "."
+  target-env: 
+    description: "The target environment"
+    required: false
+    default: "dev"
 
 runs: 
   using: composite      
@@ -22,9 +26,9 @@ runs:
       uses: actions/cache@v4
       with: 
         path: ${{ inputs.working-dir }}/node_modules
-        key: ${{ inputs.working-dir }}-${{ hashFiles(format('{0}/{1}', inputs.working-dir, 'package-lock.json')) }}
+        key: ${{ inputs.working-dir }}-${{ inputs.target-env }}-${{ hashFiles(format('{0}/{1}', inputs.working-dir, 'package-lock.json')) }}
     - name: Install dependencies
       if: steps.cache.outputs.cache-hit != 'true'
       working-directory: ${{ inputs.working-dir }}
-      run: npm ci
+      run: ${{inputs.target-env === 'dev' && "npm ci" || "npm ci --omit=dev"}}
       shell: bash
