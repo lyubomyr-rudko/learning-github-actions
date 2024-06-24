@@ -10,7 +10,7 @@ inputs:
     required: true
     default: "."
   target-env: 
-    description: "The target environment"
+    description: "Controls whether dev dependencies are installed"
     required: false
     default: "dev"
 

@@ -4,6 +4,7 @@ on:
     inputs:
       target-env:
         type: choice
+        description: Controls whether dev dependencies are installed
         options: [dev, prod]
 run-name: 17 - 1 - Custom Actions - Composite | env - ${{inputs.target-env}}
 env:
