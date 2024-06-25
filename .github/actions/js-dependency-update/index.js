@@ -18,10 +18,10 @@ const validateDirectory = (directory) => {
 
 async function run() {
   try {
-    const baseBranch = core.getBooleanInput("base-branch");
-    const targetBranch = core.getBooleanInput("target-branch");
-    const workingDirectory = core.getBooleanInput("working-directory");
-    const ghToken = core.getBooleanInput("gh-token");
+    const baseBranch = core.getInput("base-branch");
+    const targetBranch = core.getInput("target-branch");
+    const workingDirectory = core.getInput("working-directory");
+    const ghToken = core.getInput("gh-token");
     const debug = core.getBooleanInput("debug");
 
     validateBranch(baseBranch);
