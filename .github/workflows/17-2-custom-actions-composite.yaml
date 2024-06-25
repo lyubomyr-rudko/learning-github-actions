@@ -6,7 +6,7 @@ on:
       base-branch:
         description: The branch used as the base for the dependency update checks
         default: main
-      target-brach:
+      target-branch:
         description: The branch where the PR will be created
         default: update-dependencies
       working-directory:
@@ -16,6 +16,7 @@ on:
       debug:
         description: Enable debug mode
         required: false
+        default: "true"
 env:
   working-directory: 17-custom-actions/react-app
 jobs:
@@ -29,6 +30,6 @@ jobs:
         with:
           debug: ${{ inputs.debug }}
           base-branch: ${{ inputs.base-branch }}
-          target-branch: ${{ inputs.target-brach }}
+          target-branch: ${{ inputs.target-branch }}
           working-directory: ${{ inputs.working-directory }}
           gh-token: ${{ secrets.GITHUB_TOKEN }}
