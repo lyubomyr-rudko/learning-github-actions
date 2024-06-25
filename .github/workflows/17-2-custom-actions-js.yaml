@@ -17,10 +17,15 @@ on:
         description: Enable debug mode
         required: false
         default: "true"
+
 env:
   working-directory: 17-custom-actions/react-app
 jobs:
   update:
+    # top-level permissions key with two parameters, contents and pull-requests, both set to write.
+    permissions:
+      contents: write
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the code
