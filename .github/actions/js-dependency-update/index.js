@@ -35,13 +35,13 @@ async function run() {
     console.log("Target branch: ", targetBranch);
     console.log("Working directory: ", workingDirectory);
 
-    await exec.exec("npm", ["update"], {
+    await exec.exec("npm update", [], {
       cwd: workingDirectory,
     });
 
     const { stdout } = await exec.getExecOutput(
-      "git",
-      ["status -s package*.json"],
+      "git status -s package*.json",
+      [],
       {
         cwd: workingDirectory,
       }
